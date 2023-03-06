@@ -23,10 +23,6 @@ import java.util.Optional;
 public class AuthController {
     private final AuthService authService;
 
-//    public AuthController(AuthService authService) {
-//        this.authService = authService;
-//    }
-
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
         Optional<User> userOptional = authService.findByCredentials(loginDTO.getEmail(), loginDTO.getPassword());
