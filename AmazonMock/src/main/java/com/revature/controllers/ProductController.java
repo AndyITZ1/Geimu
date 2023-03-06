@@ -1,7 +1,9 @@
 package com.revature.controllers;
 
+import com.revature.dtos.PlushyDTO;
 import com.revature.dtos.VideoGameDTO;
 import com.revature.exceptions.ProductNotFoundException;
+import com.revature.models.Plushy;
 import com.revature.models.Product;
 import com.revature.models.VideoGame;
 import com.revature.services.ProductService;
@@ -33,8 +35,18 @@ public class ProductController {
         return ResponseEntity.ok(productService.addProduct(videoGame));
     }
 
-//    @PostMapping("/plushy")
-//    public ResponseEntity<Product> addPlushy(@PathVariable)
+    @PostMapping("/plushies")
+    public ResponseEntity<Product> addPlushy(@RequestBody PlushyDTO plushyDTO) {
+        Product plushy = new Plushy(0,
+                plushyDTO.getName(),
+                plushyDTO.getPrice(),
+                plushyDTO.getDescription(),
+                plushyDTO.getHeight(),
+                plushyDTO.getWeight()
+        );
+        System.out.println(plushy);
+        return ResponseEntity.ok(productService.addProduct(plushy));
+    }
 
     @GetMapping("/product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id) {

@@ -6,12 +6,14 @@ import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorValue(value = "PLUSHY")
+@ToString(callSuper = true)
 public class Plushy extends Product {
     private double height;
     private double weight;
