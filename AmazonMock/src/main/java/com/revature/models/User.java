@@ -20,7 +20,7 @@ public class User {
     private String password;
     @Column(unique = true, nullable = false)
     private String email;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 }

@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.dtos.UserResponseDTO;
 import com.revature.models.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
@@ -12,4 +13,6 @@ public interface UserService {
     UserResponseDTO createUser(User user);
     void updatePassword(User user, String password);
     String updateEmail(User user, String email);
+    List<UserResponseDTO> getAllUsers();
+    String deleteUserById(int id);
 }

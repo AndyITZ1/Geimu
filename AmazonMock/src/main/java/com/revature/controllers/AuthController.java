@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.dtos.AddressDTO;
 import com.revature.dtos.LoginDTO;
 import com.revature.dtos.RegisterDTO;
 import com.revature.dtos.UserResponseDTO;
@@ -24,12 +25,25 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
+    public ResponseEntity<UserResponseDTO> login(@RequestBody @Valid LoginDTO loginDTO, HttpSession session) {
         Optional<User> userOptional = authService.findByCredentials(loginDTO.getEmail(), loginDTO.getPassword());
         userOptional.orElseThrow(UserNotFoundException::new);
-
-        session.setAttribute("user", userOptional.get());
-        return ResponseEntity.ok(userOptional.get());
+        User foundUser = userOptional.get();
+        session.setAttribute("user", foundUser);
+        AddressDTO addressDTO = new AddressDTO(
+                foundUser.getAddress().getStreet(),
+                foundUser.getAddress().getCity(),
+                foundUser.getAddress().getState(),
+                foundUser.getAddress().getCountry(),
+                foundUser.getAddress().getZipCode()
+        );
+        return ResponseEntity.ok(new UserResponseDTO(
+                foundUser.getId(),
+                foundUser.getFirstName(),
+                foundUser.getLastName(),
+                foundUser.getEmail(),
+                addressDTO
+        ));
     }
 
     @PostMapping("/logout")

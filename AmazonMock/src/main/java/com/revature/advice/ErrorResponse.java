@@ -16,6 +16,7 @@ public class ErrorResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy hh:mm:ss")
     private LocalDateTime timeStamp;
     private String message;
+    private String trace;
 
     public ErrorResponse() {
         timeStamp = LocalDateTime.now();
@@ -26,9 +27,10 @@ public class ErrorResponse {
         this.status = status;
     }
 
-    public ErrorResponse(HttpStatus status, String message) {
+    public ErrorResponse(HttpStatus status, String message, String trace) {
         this();
         this.status = status;
         this.message = message;
+        this.trace = trace;
     }
 }

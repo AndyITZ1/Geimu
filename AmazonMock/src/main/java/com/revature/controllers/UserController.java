@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.dtos.UserResponseDTO;
 import com.revature.exceptions.EmailAlreadyUsedException;
 import com.revature.exceptions.OldPasswordException;
 import com.revature.exceptions.SameEmailUsedException;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,9 +21,9 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteUserById(@RequestBody int id) {
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<String> deleteUserById(@PathVariable int id) {
+        return ResponseEntity.ok(userService.deleteUserById(id));
     }
 
     @PutMapping("/user/{id}/password")
@@ -48,5 +50,10 @@ public class UserController {
         }
         User user = userOptional.get();
         return ResponseEntity.ok(userService.updateEmail(user, email));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 }
