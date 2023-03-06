@@ -20,11 +20,18 @@ import java.util.Optional;
 public class ProductController {
     private final ProductService productService;
 
-//    @PostMapping("/videogame")
-//    public ResponseEntity<Product> addVideoGame(@PathVariable VideoGameDTO) {
-//        Product videoGame = new VideoGame()
-//        return productService.addVideoGame()
-//    }
+    @PostMapping("/videogames")
+    public ResponseEntity<Product> addVideoGame(@RequestBody VideoGameDTO videoGameDTO) {
+        Product videoGame = new VideoGame(0,
+                videoGameDTO.getName(),
+                videoGameDTO.getPrice(),
+                videoGameDTO.getDescription(),
+                videoGameDTO.getConsole(),
+                videoGameDTO.getEdition()
+        );
+        System.out.println(videoGame);
+        return ResponseEntity.ok(productService.addProduct(videoGame));
+    }
 
 //    @PostMapping("/plushy")
 //    public ResponseEntity<Product> addPlushy(@PathVariable)

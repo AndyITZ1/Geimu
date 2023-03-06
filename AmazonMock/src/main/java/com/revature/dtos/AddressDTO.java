@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressDTO {
-//    @NotNull(message = "Please enter in street address.")
+    @NotNull(message = "Please enter in street address.")
     private String street;
     private String state;
     private String city;
-//    @NotNull(message = "Please enter in a country.")
+    @NotNull(message = "Please enter in a country.")
     private String country;
     private String zipCode;
 }

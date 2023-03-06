@@ -11,10 +11,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@DiscriminatorValue("2")
+@DiscriminatorValue(value = "PLUSHY")
 public class Plushy extends Product {
-    @Column(nullable = false)
     private double height;
-    @Column(nullable = false)
     private double weight;
+    public Plushy(int id, String name, double price, String description, double height, double weight) {
+        super(id, name, price, description);
+        this.height = height;
+        this.weight = weight;
+    }
 }

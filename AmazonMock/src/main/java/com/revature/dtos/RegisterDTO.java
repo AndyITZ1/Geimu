@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterDTO {
-//    @NotNull(message = "Please enter in your first name.")
+    @NotNull(message = "Please enter in your first name.")
     private String firstName;
-//    @NotNull(message = "Please enter in your last name.")
+    @NotNull(message = "Please enter in your last name.")
     private String lastName;
-//    @NotNull(message = "Please enter in a password.")
+    @NotNull(message = "Please enter in a password.")
     private String password;
-//    @Email(regexp = ".+@.+\\..+", message = "Please enter in a valid email address.")
+    @Email(regexp = ".+@.+\\..+", message = "Please enter in a valid email address.")
     private String email;
-//    @NotNull
+    @NotNull
     private AddressDTO address;
 }
