@@ -1,0 +1,15 @@
+com\revature\models\Product.class
+com\revature\models\User.class
+com\revature\repositories\UserRepository.class
+com\revature\AmazonMock\AmazonMockApplication.class
+com\revature\services\AddressService.class
+com\revature\repositories\AddressRepository.class
+com\revature\AmazonMock\ServletInitializer.class
+com\revature\models\VideoGame.class
+com\revature\controllers\UserController.class
+com\revature\services\UserService.class
+com\revature\models\Address.class
+com\revature\services\ProductService.class
+com\revature\controllers\ProductController.class
+com\revature\repositories\ProductRepository.class
+com\revature\models\Plushy.class
